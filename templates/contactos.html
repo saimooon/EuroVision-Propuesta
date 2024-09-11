@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Contactos - Eurovision Insider{% endblock %}
+
+{% block content %}
+<section id="contactos" class="main special">
+    <!-- Mostrar mensajes de flash -->
+    <div id="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div>
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <header class="major">
+        <h2>¿Quiénes Somos?</h2>
+        <p>Somos un equipo comprometido y apasionado por brindarte la mejor experiencia en Eurovision Insider. Nuestro objetivo es ofrecer información clara y precisa sobre el fascinante mundo de Eurovisión, desde noticias hasta análisis detallados. Estamos aquí para ayudarte, ya sea respondiendo a tus dudas o proporcionándote la mejor cobertura del evento. Si necesitas más información o tienes alguna pregunta, no dudes en ponerte en contacto con nosotros. ¡Estamos para ayudarte en todo lo que necesites!</p>
+    </header>
+    
+    <div class="container">
+        <div class="row">
+            <!-- Primera Card -->
+            <div class="col-md-6 col-sm-12 mb-4 d-flex">
+                <div class="card w-100">
+                    <img src="{{ url_for('static', filename='images/quienessomospedro.jpg') }}" class="card-img-top" alt="Imagen 1">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Pedro</h5>
+                        <p class="card-text">Por otro lado, Pedro aporta su profundo conocimiento de la industria musical y su perspectiva crítica a Eurovision Insider. Con una buena experiencia como periodista, Pedro destaca por su capacidad para analizar las tendencias musicales y las estrategias de los artistas, brindando a los lectores una visión informada y perspicaz del concurso.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Segunda Card -->
+            <div class="col-md-6 col-sm-12 mb-4 d-flex">
+                <div class="card w-100">
+                    <img src="{{ url_for('static', filename='images/quienessomosvalentina.jpg') }}" class="card-img-top" alt="Imagen 2">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Valentina Aedo</h5>
+                        <p class="card-text">Una entusiasta de la música desde su infancia, combina su amor por Eurovisión con su experiencia en periodismo cultural para ofrecer un enfoque fresco y perspicaz a cada artículo. Su pasión por descubrir nuevas melodías y su fascinación por las historias que hay detrás de cada canción hacen de ella una guía excepcional en el universo de Eurovisión.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Espacio para video local -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="embed-responsive embed-responsive-16by9" style="padding: 20px;">
+                    <!-- Etiqueta video -->
+                    <video class="embed-responsive-item" style="width: 100%; height: 400px;" controls>
+                        <!-- Ruta del archivo de video local -->
+                        <source src="{{ url_for('static', filename='videos/video_local.mp4') }}" type="video/mp4">
+                        <!-- Mensaje si el navegador no soporta el video -->
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <h2 class="text-center m-5">Contacta con Nosotros</h2>
+            <p class="text-center">Estamos aquí para ayudarte, escríbenos y te responderemos a la brevedad</p>
+            <div class="col-lg-10 col-md-12 col-sm-12"> <!-- Aumentamos el ancho -->
+                <form action="/contactos" method="post">
+                    <div class="row gtr-uniform">
+                        <!-- Nombre -->
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <input type="text" name="name" id="name" placeholder="Nombre" class="form-control form-control-lg" /> <!-- Aumentar el tamaño del campo -->
+                        </div>
+                        <!-- Correo Electrónico -->
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <input type="email" name="email" id="email" placeholder="Correo electrónico" class="form-control form-control-lg" /> <!-- Aumentar el tamaño del campo -->
+                        </div>
+                        <!-- Mensaje -->
+                        <div class="col-12 mb-4">
+                            <textarea name="message" id="message" placeholder="Mensaje" rows="8" class="form-control form-control-lg"></textarea> <!-- Aumentar el tamaño del campo y filas -->
+                        </div>
+                        <!-- Botones -->
+                        <div class="col-12 text-center">
+                            <ul class="actions list-unstyled">
+                                <li><input type="reset" value="Limpiar" class="btn btn-secondary btn-lg" /></li> <!-- Aumentar tamaño del botón -->
+                                <li><input type="submit" value="Enviar Correo de Contacto" class="btn btn-primary btn-lg me-2" /></li> <!-- Aumentar tamaño del botón -->
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Script para ocultar el flash message después de 3 segundos -->
+<script>
+    window.setTimeout(function() {
+        var flashMessages = document.getElementById('flash-messages');
+        if (flashMessages) {
+            flashMessages.style.transition = "opacity 1s ease-out";
+            flashMessages.style.opacity = 0;
+            setTimeout(function(){ flashMessages.remove(); }, 1000);  // Remover del DOM después de desaparecer
+        }
+    }, 3000);
+</script>
+
+{% endblock %}

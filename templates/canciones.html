@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Canciones - Eurovision Insider{% endblock %}
+
+{% block content %}
+<section id="canciones" class="main special text-center">
+        <!-- Mostrar mensajes de flash -->
+        <div id="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="container mt-3">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    <header class="major">
+        <h2>Canciones de Eurovisión</h2>
+        <p>Descubre las canciones mas populares de Youtube que han marcado la historia de Eurovisión.</p>
+    </header>
+    
+    <div class="container mt-5">
+        <div class="row justify-content-center"> <!-- Centrar las columnas -->
+            {% for video in videos %}
+            <div class="col-12 mb-4"> <!-- Cambiado a col-12 para ocupar todo el ancho -->
+                <div class="card mb-4 w-100"> <!-- w-100 asegura que la tarjeta ocupe todo el ancho -->
+                    <div class="card-body">
+                        <p class="card-text text-center"><strong>{{ video.country }}</strong></p> <!-- Mostrar país de origen -->
+                        <div class="ratio ratio-16x9 mb-3"> <!-- Usando ratio para hacer que los videos sean responsivos -->
+                            <iframe class="embed-responsive-item" src="{{ video.url }}" allowfullscreen></iframe>
+                        </div>
+                        <h5 class="card-title text-center">{{ video.title }}</h5>
+                        <p class="card-text text-center">{{ video.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="container mb-5">
+            <span class="logo"><img src="{{ url_for('static', filename='images/logoeurovision.svg') }}" alt="" /></span>
+        </div>
+        <!-- Formulario de sugerencias modificado -->
+        <h1>Envía tu canción para que aparezca en nuestra página</h1>
+        <form action="#" method="post" class="mt-5 w-100"> <!-- w-100 asegura que el formulario use todo el ancho -->
+            <div class="row justify-content-center gtr-uniform">
+                <!-- Campo de Email -->
+                <div class="col-6 col-12-xsmall mb-3">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required />
+                </div>
+
+                <!-- Campo de Link -->
+                <div class="col-6 col-12-xsmall mb-3">
+                    <input type="url" name="link" id="link" class="form-control" placeholder="Enlace a tu contenido" required />
+                </div>
+
+                <!-- Campo de Mensaje (opcional) -->
+                <div class="col-12 mb-3">
+                    <textarea name="message" id="message" class="form-control" placeholder="Mensaje (opcional)" rows="6"></textarea>
+                </div>
+
+                <!-- Botones de Enviar y Limpiar -->
+                <div class="col-12 text-center">
+                    <ul class="actions list-unstyled">
+                        <li><input type="submit" value="Enviar" class="btn btn-primary me-2" /></li>
+                        <li><input type="reset" value="Limpiar" class="btn btn-secondary" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

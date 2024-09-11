@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Historia de Eurovisión{% endblock %}
+{% block description %}Descubre la historia del Festival de la Canción de Eurovisión.{% endblock %}
+{% block keywords %}Eurovisión, historia, concurso{% endblock %}
+
+{% block content %}
+<section id="historia" class="main">
+    <div class="spotlight">
+        <div class="content">
+            <header class="major">
+                <h2>Historia de Eurovisión</h2>
+            </header>
+            <p>El Festival de la Canción de Eurovisión es un concurso anual de canciones organizado por la Unión Europea de Radiodifusión (UER). Desde su primera edición en 1956, ha crecido hasta convertirse en uno de los eventos musicales más grandes y vistos del mundo. En este concurso, artistas de diferentes países compiten interpretando canciones originales en un espectáculo lleno de diversidad cultural y talento.</p>
+            <p>Eurovisión fue creado como un esfuerzo para unir a Europa después de la Segunda Guerra Mundial a través de la música. Desde entonces, ha evolucionado para convertirse en un emblema de diversidad, creatividad y unidad europea.</p>
+        </div>
+        <span class="image"><img src="{{ url_for('static', filename='images/inicio.png') }}" alt="Imagen de Eurovisión" /></span>
+    </div>
+    
+    <div class="container mt-5">
+        <!-- Inicios (1956-1969) -->
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h3>Inicios (1956-1969)</h3>
+                <p>El Festival de Eurovisión comenzó en 1956 con solo siete países participantes. Fue creado como un esfuerzo para unir a Europa después de la devastación de la Segunda Guerra Mundial a través de la música. Durante estos primeros años, el formato y las reglas del concurso estaban en constante evolución.</p>
+            </div>
+        </div>
+
+        <!-- Expansión (1970-1989) -->
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h3>Expansión (1970-1989)</h3>
+                <p>El concurso ganó popularidad en los años 70 y 80, con más países uniéndose cada año. Un momento icónico fue en 1974, cuando ABBA ganó con su famosa canción "Waterloo", lo que llevó a su fama mundial. Estos años marcaron el inicio del fenómeno global que Eurovisión es hoy.</p>
+            </div>
+        </div>
+
+        <!-- Era Moderna (1990-Presente) -->
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h3>Era Moderna (1990-Presente)</h3>
+                <p>Con la llegada de la tecnología moderna y cambios en las reglas, Eurovisión ha seguido evolucionando. La inclusión de televoto y la expansión de participantes más allá de Europa, como Australia, han sido parte de los hitos recientes. Hoy en día, el festival es uno de los eventos musicales más grandes del mundo, alcanzando a millones de espectadores globales.</p>
+            </div>
+        </div>
+
+        <!-- Botón para ver ganadores -->
+        <div class="row mb-5">
+            <div class="col-md-12 text-center">
+                <a href="{{ url_for('ganadores') }}" class="btn btn-primary btn-lg">Ver Lista de Ganadores (2018-2023)</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

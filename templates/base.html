@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}EUROVISION INSIDER{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/24e5a6471c.js" crossorigin="anonymous"></script>
+    <style>
+        .top-bar a:hover,
+        .top-bar a:focus {
+            text-decoration: none;
+            outline: none; /* Quitar el subrayado punteado en focus */
+        }
+        .footer-map iframe {
+            width: 100%;
+            height: 300px; /* Ajusta la altura según sea necesario */
+            border: 0;
+        }
+        .footer-section {
+            padding: 20px;
+        }
+        .top-bar {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .top-bar .info {
+            display: inline-block;
+            margin: 0 35px;
+        }
+        /* Asegura que la imagen esté centrada vertical y horizontalmente dentro de la navbar */
+        .navbar-brand {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;     /* Centra verticalmente */
+            height: 100%;            /* Asegura que el contenedor ocupe todo el espacio vertical de la navbar */
+        }
+
+        /* Estilo para la imagen del logo */
+        .navbar-logo {
+            height: 40px;  /* Ajusta la altura de la imagen */
+            width: 40px;   /* Ajusta el ancho de la imagen */
+            max-height: 100%; /* Asegura que la imagen no exceda la altura del navbar */
+            max-width: 100%;  /* Asegura que la imagen no exceda su propio ancho */
+        }
+        .navbar-toggler-icon {
+            width: 20px;  /* Ajusta el tamaño del ícono según tus necesidades */
+            height: 20px;
+            background-size: 20px 20px; /* Asegura que el ícono se redimensione proporcionalmente */
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div class="top-bar">
+        <!-- Enlace mailto para el correo -->
+        <span class="info">
+            <a href="mailto:cdi.umh.2024@gmail.com" style="color: white; text-decoration: none; outline: none;">cdi.umh.2024@gmail.com</a>
+        </span>
+        
+        <!-- Enlace tel para el CTA del teléfono -->
+        <span class="cta">
+            <a href="tel:+34966658500" style="color: white; text-decoration: none; outline: none;">+34966658500</a>
+        </span>
+    </div>
+    <div id="wrapper">
+
+        <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo eurovision insider.png') }}" alt="Inicio" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link {% if request.path == url_for('home') %}active{% endif %}">Inicio</a></li>
+                    <li class="nav-item"><a href="{{ url_for('historia') }}" class="nav-link {% if request.path == url_for('historia') %}active{% endif %}">Historia</a></li>
+                    <li class="nav-item"><a href="{{ url_for('ganadores') }}" class="nav-link {% if request.path == url_for('ganadores') %}active{% endif %}">Ganadores</a></li>
+                    <li class="nav-item"><a href="{{ url_for('participantes') }}" class="nav-link {% if request.path == url_for('participantes') %}active{% endif %}">Participantes</a></li>
+                    <li class="nav-item"><a href="{{ url_for('canciones') }}" class="nav-link {% if request.path == url_for('canciones') %}active{% endif %}">Canciones</a></li>
+                    <li class="nav-item"><a href="{{ url_for('eventos') }}" class="nav-link {% if request.path == url_for('eventos') %}active{% endif %}">Eventos</a></li>
+                    <li class="nav-item"><a href="{{ url_for('noticias') }}" class="nav-link {% if request.path == url_for('noticias') %}active{% endif %}">Noticias</a></li>
+                    <li class="nav-item"><a href="{{ url_for('contactos') }}" class="nav-link {% if request.path == url_for('contactos') %}active{% endif %}">Contactos</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="main" class="container mt-4">
+            {% block content %}
+
+
+
+            {% endblock %}
+        </div>
+        <!-- Botón para volver arriba -->
+        <button onclick="scrollToTop()" id="backToTopBtn" title="Volver arriba" class="btn btn-primary">↑ Volver Arriba</button>
+
+        <footer id="footer" class="mt-4"  style="background-color: transparent;">
+            <div class="container">
+                <!-- Sección 'Acerca de Eurovision Insider' en una fila separada -->
+                <div class="row mb-4">
+                    <div class="col-md-12 footer-section">
+                        <section>
+                            <h2>Acerca de Eurovision Insider</h2>
+                            <p>Eurovision Insider es tu fuente de noticias y análisis sobre el Festival de la Canción de Eurovisión. Únete a nosotros y sumérgete en el mundo de la música europea.</p>
+                        </section>
+                    </div>
+                </div>
+                
+                <!-- Sección 'Contacta con nosotros' y 'Encuéntranos' en una misma fila -->
+                <div class="row">
+                    <div class="col-6 mb-3 footer-section">
+                        <section>
+                            <h2>Contacta con nosotros</h2>
+                            <dl class="alt">
+                                <dt>Dirección</dt>
+                                <dd>Avinguda de la Universitat d'Elx, s/n, 03202 Elche, Alicante, España</dd>
+                                <dt>Teléfono</dt>
+                                <dd>+34966658500</dd>
+                                <dt>Email</dt>
+                                <dd><a href="mailto:cdi.umh.2024@gmail.com">cdi.umh.2024@gmail.com</a></dd>
+                            </dl>
+                            <ul class="icons">
+                                <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                                <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                                <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+                                <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-6 mb-3 footer-section">
+                        <section>
+                            <h2>Encuéntranos</h2>
+                            <div class="footer-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d400921.83430716925!2d-0.9641272!3d38.274814!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b6636b528c97%3A0x1ec7ad33555888ab!2sUniversidad%20Miguel%20Hern%C3%A1ndez!5e0!3m2!1ses!2scl!4v1725909994908!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+    // Mostrar el botón cuando se hace scroll hacia abajo
+    window.onscroll = function() {toggleScrollButton()};
+
+    function toggleScrollButton() {
+        var btn = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    }
+
+    // Función para volver a la parte superior de la página
+    function scrollToTop() {
+        document.body.scrollTop = 0; // Para Safari
+        document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+    }
+</script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

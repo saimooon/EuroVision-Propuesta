@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Noticias - Eurovision Insider{% endblock %}
+
+{% block content %}
+<section id="noticias" class="main special">
+    <div class="container">
+        <span class="logo"><img src="{{ url_for('static', filename='images/logoeurovision.svg') }}" alt="" /></span>
+    </div>
+    <header class="major">
+        <h2>Noticias de Eurovisión</h2>
+        <p>Mantente al día con las últimas noticias y actualizaciones sobre Eurovisión</p>
+    </header>
+
+    <!-- Párrafo indicando el propósito del botón -->
+    <p class="text-center mt-4">Haz click en el siguiente botón para acceder al sitio web oficial de Eurovisión Spain y conocer las últimas noticias.</p>
+
+    <!-- Botón para redirigir a la página externa de noticias -->
+    <div class="text-center mt-5">
+        <a href="https://eurovision-spain.com/" class="btn btn-info btn-lg" target="_blank">Click para ver las últimas noticias</a>
+    </div>
+</section>
+{% endblock %}

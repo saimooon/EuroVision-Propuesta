@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Participantes - Eurovision Insider{% endblock %}
+
+{% block content %}
+<section id="participantes" class="main special">
+    <header class="major">
+        <h2>Participantes de Eurovisión 2024</h2>
+        <p>Conoce a los participantes del festival de la canción de Eurovisión</p>
+    </header>
+
+    <!-- Mostrar mensajes de flash -->
+    <div id="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="container mt-3">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            {% for participante in participantes %}
+            <div class="col-md-6 col-12">
+                <div class="card m-5">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">{{ participante.country }}</h6>
+                        <h5 class="card-title">{{ participante.name }}</h5>
+    
+                        {% if participante.video_url %}
+                        <!-- Contenedor del video con ratio de Bootstrap -->
+                        <div class="ratio ratio-16x9 mb-3"> <!-- 16:9 es la relación de aspecto estándar de los videos -->
+                            <iframe class="embed-responsive-item" src="{{ participante.video_url }}" allowfullscreen></iframe>
+                        </div>
+                        {% endif %}
+    
+                        <p class="card-text"><strong>Canción:</strong> {{ participante.song }}</p>
+                        <p class="card-text">{{ participante.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="container">
+        <header class="major">
+            <h3 class="title">Envíanos tu canción</h3>
+        </header>
+        
+        <!-- Formulario para enviar canción -->
+        <form action="/participantes" method="post">
+            <div class="row gtr-uniform">
+                <!-- Campo de Nombre -->
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required />
+                </div>
+        
+                <!-- Campo de Correo Electrónico -->
+                <div class="col-md-6 col-12 mb-3">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required />
+                </div>
+        
+                <!-- Campo de Link (Enlace a tu contenido) que ocupe toda la fila -->
+                <div class="col-12 mb-3">
+                    <input type="url" name="link" id="link" class="form-control" placeholder="Enlace a tu contenido" />
+                </div>
+        
+                <!-- Campo de Mensaje -->
+                <div class="col-12 mb-3">
+                    <textarea name="message" id="message" class="form-control" placeholder="Mensaje (opcional)" rows="6" required></textarea>
+                </div>
+        
+                <!-- Botones de Enviar y Limpiar -->
+                <div class="col-12 text-center">
+                    <ul class="actions list-unstyled">
+                        <li><input type="submit" value="Enviar" class="btn btn-primary me-2" /></li>
+                        <li><input type="reset" value="Limpiar" class="btn btn-secondary" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    window.setTimeout(function() {
+        var flashMessages = document.getElementById('flash-messages');
+        if (flashMessages) {
+            flashMessages.style.transition = "opacity 1s ease-out";
+            flashMessages.style.opacity = 0;
+            setTimeout(function(){ flashMessages.remove(); }, 1000);  // Remover del DOM después de desaparecer
+        }
+    }, 3000);
+</script>
+{% endblock %}

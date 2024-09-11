@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - EUROVISION INSIDER{% endblock %}
+
+{% block content %}
+<!-- Introduction -->
+<header id="header" class="alt">
+    <div class="container">
+        <span class="logo"><img src="{{ url_for('static', filename='images/logoeurovision.svg') }}" alt="" /></span>
+    </div>
+    <a href="https://eurovision-spain.com/eurocanciones/" class="btn btn-info" >Participar en la Votación</a>
+</header>
+
+<section id="intro" class="main">
+    <div class="spotlight">
+        <div class="content">
+            <header class="major">
+                <h2>El Festival de la Canción de Eurovisión</h2>
+            </header>
+            <p>
+                Es un concurso anual de canciones organizado por la Unión Europea de Radiodifusión (UER). Desde su primera edición en 1956, ha crecido hasta convertirse en uno de los eventos musicales más grandes y vistos del mundo. En este concurso, artistas de diferentes países compiten interpretando canciones originales en un espectáculo lleno de diversidad cultural y talento.<br>
+                Fue creado como un esfuerzo para unir a Europa después de la Segunda Guerra Mundial a través de la música.
+            </p>
+        </div>
+        <span class="image"><img src="{{ url_for('static', filename='images/fondo.jpg') }}" alt="" /></span>
+    </div>
+</section>
+
+<!-- Votación Section -->
+<section id="votacion" class="main special">
+    <header class="major">
+        <h2>Sistema de Votación</h2>
+    </header>
+    <ul class="features">
+        <li>
+            <span class="icon solid major style1 fa-vote-yea"></span>
+            <h3>Sistema de Puntuación</h3>
+            <p>El sistema de votación se basa en una combinación de votos del jurado profesional y el televoto del público. Cada país otorga puntos (de 1 a 8, 10 y 12) a sus canciones favoritas. Los puntos se dividen en dos partes: jurado y público.</p>
+        </li>
+        <li>
+            <span class="icon solid major style2 fa-chart-bar"></span>
+            <h3>Anuncio de Resultados</h3>
+            <p>Primero se anuncian los resultados del jurado profesional y luego los del televoto del público. La combinación de ambos determina la canción ganadora.</p>
+        </li>
+    </ul>
+    <footer class="major">
+        <ul class="actions special">
+            <li><a href="https://eurovision-spain.com/eurocanciones/" class="button primary">Participar en la Votación</a></li>
+        </ul>
+    </footer>
+</section>
+
+<!-- Anfitrión y Sede Section -->
+<section id="anfitrion-sede" class="main special">
+    <header class="major">
+        <h2>Anfitrión y Sede</h2>
+        <p>El país ganador del año anterior tiene el derecho de albergar el concurso del año siguiente.</p>
+    </header>
+    <ul class="features">
+        <li>
+            <span class="icon solid major style1 fa-globe"></span>
+            <h3>Elección del Anfitrión</h3>
+            <p>El país ganador tiene el derecho de albergar el concurso. La ciudad anfitriona es seleccionada en colaboración con la UER, y se elige según la capacidad logística y la infraestructura adecuada para el evento.</p>
+        </li>
+        <li>
+            <span class="icon solid major style2 fa-microphone"></span>
+            <h3>Escenografía y Producción</h3>
+            <p>Cada sede ofrece una escenografía única que refleja la cultura y creatividad del país anfitrión. El evento incluye tres espectáculos en vivo: dos semifinales y la gran final.</p>
+        </li>
+    </ul>
+</section>
+
+<!-- Estructura del Concurso -->
+<section id="structure" class="main special">
+    <header class="major">
+        <h2>Estructura del Concurso</h2>
+        <p>El Festival de Eurovisión sigue un formato que incluye semifinales y una gran final, con una votación que involucra tanto a los jurados como al público.</p>
+    </header>
+    <ul class="statistics">
+        <li class="style1">
+            <span class="icon solid fa-code-branch"></span>
+            <strong>2 Semifinales</strong>
+            <p>Países compiten por un puesto en la gran final.</p>
+        </li>
+        <li class="style2">
+            <span class="icon fa-trophy"></span>
+            <strong>1 Gran Final</strong>
+            <p>Los ganadores de cada semifinal y los miembros del "Big Five" compiten por el trofeo.</p>
+        </li>
+    </ul>
+</section>
+
+<!-- Botones para Navegar -->
+<section id="cta" class="main special">
+    <header class="major">
+        <h2>Participa en la Votación</h2>
+        <p>Descubre cómo funciona el sistema de votación y participa.</p>
+    </header>
+    <footer class="major">
+        <ul class="actions special">
+            <li><a href="https://eurovision-spain.com/eurocanciones/" class="button primary">Participar en la Votación</a></li>
+            <li><a href="{{ url_for('historia') }}" class="button">Más sobre la Historia</a></li>
+        </ul>
+    </footer>
+</section>
+{% endblock %}

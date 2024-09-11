@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Eventos - Eurovision Insider{% endblock %}
+
+{% block content %}
+<section id="eventos" class="main special">
+    <div class="container">
+        <span class="logo"><img src="{{ url_for('static', filename='images/logoeurovision.svg') }}" alt="" /></span>
+    </div>
+    <header class="major">
+        <h2>Eventos de Eurovisión</h2>
+        <p>Infórmate sobre los próximos eventos y fechas importantes de Eurovisión</p>
+    </header>
+
+    <!-- Botón para redirigir a la página externa -->
+    <div class="text-center mt-5">
+        <a href="https://eurovision-spain.com/calendario/" class="btn btn-info btn-lg" target="_blank">Click para conocer los próximos eventos</a>
+    </div>
+</section>
+{% endblock %}

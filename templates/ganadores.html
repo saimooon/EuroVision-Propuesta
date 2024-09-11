@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Ganadores de Eurovisión{% endblock %}
+{% block description %}Lista de ganadores del Festival de la Canción de Eurovisión.{% endblock %}
+{% block keywords %}Eurovisión, ganadores, concurso{% endblock %}
+
+{% block content %}
+<section id="ganadores" class="main">
+    <header class="major">
+        <h2>Ganadores de Eurovisión 2018-2023</h2>
+    </header>
+    <ul class="features">
+        <li class="d-flex align-items-center mb-5">
+            <img src="{{ url_for('static', filename='images/loreen-eurovision-2023.jpg') }}" alt="Loreen" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px;">
+            <div>
+                <h3>2023 - Loreen</h3>
+                <p>Canción: "Loreen - 'Tattoo' (583 puntos)"</p>
+            </div>
+        </li>
+        <li class="d-flex align-items-center mb-5">
+            <img src="{{ url_for('static', filename='images/kalush_stefania-eurovision-2022.jpg') }}" alt="Kalush Orchestra" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px;">
+            <div>
+                <h3>2022 - Kalush Orchestra - Stefania</h3>
+                <p>Canción: "Kalush Orchestra - Stefania" (631 puntos)</p>
+            </div>
+        </li>
+    </ul>
+    
+    <div class="container mt-5">
+        <div class="row">
+            {% for video in videos %}
+            <div class="col-lg-6 col-sm-12 mb-4"> <!-- Mostrar 2 en grandes y 1 en pequeñas -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="embed-responsive embed-responsive-16by9 mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted">GANADOR DEL AÑO {{ video.year }}</h6> <!-- Mostrar el año -->
+                            <iframe class="embed-responsive-item" src="{{ video.url }}" allowfullscreen style="width: 100%; height: 300px;"></iframe>
+                        </div>
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text">{{ video.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
