@@ -8,8 +8,8 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'simon.andaurt@gmail.com'
-app.config['MAIL_PASSWORD'] = 'nvvz bser uqrc tbht'
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
 app.config['MAIL_DEFAULT_SENDER'] = 'simon.andaurt@gmail.com'  # Remitente por defecto (debe ser tu Gmail)
 
 mail = Mail(app)
